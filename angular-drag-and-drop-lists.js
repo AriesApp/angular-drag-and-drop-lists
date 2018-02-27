@@ -1,5 +1,5 @@
 /**
- * angular-drag-and-drop-lists v2.1.1
+ * angular-drag-and-drop-lists v2.1.2
  *
  * Copyright (c) 2014 Marcel Juenemann marcel@juenemann.cc
  * Copyright (c) 2014-2017 Google Inc.
@@ -131,9 +131,11 @@
         element.addClass("dndDragging");
         $timeout(function() { element.addClass("dndDraggingSource"); }, 0);
 
-        var clientRect = event.target.getBoundingClientRect();
-        var offsetX    = (event.clientX - clientRect.left);
-        var offsetY    = (event.clientY - clientRect.top);
+        // var clientRect = event.target.getBoundingClientRect();
+        // var offsetX    = (event.clientX - clientRect.left);
+        // var offsetY    = (event.clientY - clientRect.top);
+        var offsetX    = (event.pageX - element.offset().left);
+        var offsetY    = (event.pageY - element.offset().top);
 
         // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
         if (event._dndHandle && event.dataTransfer.setDragImage) {

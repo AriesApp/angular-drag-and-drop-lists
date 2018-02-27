@@ -1,3 +1,8 @@
+# 2.1.2 (2018-02-26)
+
+## Features
+- fix setDragImage offset
+
 # 2.1.1 (2017-11-08)
 
 ## Features
