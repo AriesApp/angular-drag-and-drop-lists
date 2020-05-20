@@ -342,8 +342,17 @@
             } else {
               var isFirstHalf = event.clientY < rect.top + rect.height / 2;
             }
-            listNode.insertBefore(placeholderNode,
-                isFirstHalf ? listItemNode : listItemNode.nextSibling);
+            // fix performance issue
+            // https://github.com/marceljuenemann/angular-drag-and-drop-lists/issues/413
+            if (isFirstHalf) {
+              if (listItemNode.previousSibling != placeholderNode) {
+                listNode.insertBefore(placeholderNode, listItemNode);
+              }
+            } else {
+              if (listItemNode.nextSibling != placeholderNode) {
+                listNode.insertBefore(placeholderNode, listItemNode.nextSibling);
+              }
+            }
           }
         }
 
